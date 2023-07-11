@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Confirmation;
 use App\Models\Category;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class PostController extends Controller
         return view('posts.show')->with([
             'post' => $post,
             'recent_posts' => Post::latest()->get()->except($post->id)->take(5),
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'confirmation'=> Confirmation::all()
         ]);
 
     }
