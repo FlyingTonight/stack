@@ -52,11 +52,11 @@
                 <a href="{{route ('posts.create')}}" class="btn btn-success mr-3 d-none d-lg-block">Post Yaratish</a>
                 <form action="{{route('logout')}}" method="POST">
                 @csrf
-                <a href="{{route ('login')}}" class="btn btn-danger mr-3 d-none d-lg-block">chiqish</a>
+                <a href="{{route ('logout')}}" class="btn btn-danger mr-3 d-none d-lg-block">chiqish</a>
                 </form>
                @else
 
-               <a href="{{route ('logout')}}" class="btn btn-primary mr-3 d-none d-lg-block">Kirish</a>
+               <a href="{{route ('login')}}" class="btn btn-primary mr-3 d-none d-lg-block">Kirish</a>
 
                 @endauth
               {{-- <a class="btn btn-outline-success" href="{{route('posts.create')}}">Create</a> --}}

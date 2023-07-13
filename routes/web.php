@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
@@ -35,6 +36,7 @@ Route::get('/',[PostController::class,'index'])->name('welcome');
 // Route::post('/store',[PostController::class,'store'])->name('store');
 
 
+Route::post('/confirmations{id}', [ConfirmationController::class, 'changeStatus'])->name('confirmations');
 
 
 

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Confirmation extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'UserID';
     protected $fillable = [
         'comment_id',
         'confirmed',

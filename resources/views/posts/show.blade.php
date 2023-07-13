@@ -104,20 +104,26 @@
             <h2><strong>{{$comment->user->name}}</strong> </h2>
             <small><i>{{$comment->created_at}}</i></small>
             <h3>{{$comment->body}}</h3>
-            {{-- @auth --}}
-                {{-- @canany(['update'],$comment) --}}
 
-            <button class="btn btn-sm btn-light">True</button>
-                {{-- @endcanany --}}
-            {{-- @endauth --}}
 
             @if ($comment->confirmation)
             @if ($comment->confirmation->confirmed = true)
-                True answer
+               <p class="primary"> True answer </p>
             @endif
-        @else
-            Not Confirmed
+        @elseif ($comment->confirmation === false)
+        @auth
+
+
+
+        <form action="{{ route('confirmations', ['id' => $comment->id]) }}" method="POST">
+            @csrf
+            <input type="hidden" name="comment_id" value="{{$comment->id}}">
+            <button type="submit">Confirm</button>
+        </form>
+    @endauth
+
         @endif
+
         <hr>
         </div>
     </div>
@@ -132,7 +138,9 @@
     @csrf
 </div>
 
-    <h3>Create a Comment</h3>
+   @auth
+
+   <h3>Create a Comment</h3>
 </div>
 <div class="container">
     <div class="w-50 py-4">
@@ -158,7 +166,7 @@
         {{-- </div> --}}
 
        </div>
-
+       @endauth
 </form>
 </body>
 </html>
